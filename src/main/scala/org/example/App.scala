@@ -30,7 +30,7 @@ object App {
     val regexPattern = ".*ACC_45616.*".r
 
     val blocks = filePath.flatMap { fileContent =>
-      blockPattern.findAllMatchIn(fileContent).map(_.group(1)) // Извлекаем содержимое блоков
+      blockPattern.findAllMatchIn(fileContent).map(_.group(1))
     }
 
     val matchingBlocks = blocks.filter(block => regexPattern.findFirstIn(block).isDefined)
@@ -41,7 +41,7 @@ object App {
 
   def countDocumentsQS (filePath: RDD[String]) : Unit = {
 
-    
+
 
   }
 
