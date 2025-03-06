@@ -43,14 +43,14 @@ object App {
     lines.flatMap { line =>
       if (line.startsWith("CARD_SEARCH_START")) {
         currentEvent = "CARD_SEARCH"
-        currentDate = line.split(" ")(1).split("_")(0) // Только дата
+        currentDate = line.split(" ")(1).split("_")(0)
         isInsideCardSearch = true
-        cardSearchData = List(line) // Запоминаем строку с поиском
+        cardSearchData = List(line)
         None
       } else if (line.startsWith("CARD_SEARCH_END")) {
         val row = Row("CARD_SEARCH", currentDate, "", cardSearchData.mkString(" "))
         isInsideCardSearch = false
-        cardSearchData = List() // Сбросить данные
+        cardSearchData = List()
         Some(row)
       } else if (line.startsWith("QS")) {
         currentEvent = "QS"
